@@ -20,7 +20,8 @@ namespace order
             foreach (var food in foods)
             {
                 FlowLayoutPanel subpanel = new FlowLayoutPanel();
-                subpanel.Height = 50;
+
+                subpanel.Height = 40;
                 CheckBox checkbox = new CheckBox();
                 checkbox.Text = food;
                 checkbox.CheckedChanged += checkBoxHandler; // 設定 CheckBox 的事件處理方法

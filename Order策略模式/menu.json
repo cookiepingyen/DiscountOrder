@@ -1,0 +1,356 @@
+{
+  "Menus": [
+    {
+      "FoodType": "主餐",
+      "Foods": [
+        {
+          "Name": "魚排飯",
+          "Price": 110
+        },
+        {
+          "Name": "雞排飯",
+          "Price": 95
+        },
+        {
+          "Name": "烤肉飯",
+          "Price": 90
+        },
+        {
+          "Name": "雞腿飯",
+          "Price": 100
+        },
+        {
+          "Name": "咖哩飯",
+          "Price": 90
+        }
+      ]
+    },
+    {
+      "FoodType": "湯",
+      "Foods": [
+        {
+          "Name": "蘿蔔湯",
+          "Price": 30
+        },
+        {
+          "Name": "餛飩湯",
+          "Price": 40
+        },
+        {
+          "Name": "玉米濃湯",
+          "Price": 35
+        },
+        {
+          "Name": "味噌湯",
+          "Price": 25
+        }
+      ]
+    },
+    {
+      "FoodType": "飲料",
+      "Foods": [
+        {
+          "Name": "紅茶",
+          "Price": 20
+        },
+        {
+          "Name": "烏龍茶",
+          "Price": 25
+        },
+        {
+          "Name": "清茶",
+          "Price": 30
+        }
+      ]
+    },
+    {
+      "FoodType": "甜點",
+      "Foods": [
+        {
+          "Name": "布丁",
+          "Price": 15
+        },
+        {
+          "Name": "奶酪",
+          "Price": 20
+        },
+        {
+          "Name": "泡芙",
+          "Price": 30
+        }
+      ]
+    }
+  ],
+  "Discounts": [
+    {
+      "Title": "雞腿飯或排骨飯買二送一份燙青菜和一份貢丸湯",
+      "Strategy": "Namespace.className.BuyXGetYFree",
+      "Conditions": [
+        {
+          "Product": [ "雞腿飯", "排骨飯" ],
+          "Count": 2
+        }
+      ],
+      "Award": [
+        {
+          "Product": [ "燙青菜" ],
+          "Count": 1,
+          "Type": "product",
+          "Price": 0,
+          "Ratio": 0
+        },
+        {
+          "Product": [ "貢丸湯" ],
+          "Count": 1,
+          "Type": "product",
+          "Price": 0,
+          "Ratio": 0
+        }
+      ]
+    },
+    {
+      "Title": "飲料任選三杯送一杯(送最低價)",
+      "Strategy": "Namespace.className.BuyXGetYFree",
+      "Conditions": [
+        {
+          "Product": [ "紅茶", "烏龍茶", "清茶" ],
+          "Count": 3
+        }
+      ],
+      "Award": [
+        {
+          "Product": [ "紅茶", "烏龍茶", "清茶" ],
+          "Count": 1,
+          "Type": "product",
+          "Price": 0,
+          "Ratio": 0
+        }
+      ]
+    },
+    {
+      "Title": "雞排飯買三個250",
+      "Strategy": "Namespace.className.FixedBundlePrice",
+      "Conditions": [
+        {
+          "Product": [ "雞排飯" ],
+          "Count": 3
+        }
+      ],
+      "Award": [
+        {
+          "Product": [],
+          "Count": 0,
+          "Type": "Price",
+          "Price": 250,
+          "Ratio": 0
+        }
+      ]
+    },
+    {
+      "Title": "咖哩飯加味噌湯100",
+      "Strategy": "Namespace.className.FixedBundlePrice",
+      "Conditions": [
+        {
+          "Product": [ "咖哩飯" ],
+          "Count": 1
+        },
+        {
+          "Product": [ "味噌湯" ],
+          "Count": 1
+        }
+      ],
+      "Award": [
+        {
+          "Product": [],
+          "Count": 0,
+          "Type": "Price",
+          "Price": 100,
+          "Ratio": 0
+        }
+      ]
+    },
+    {
+      "Title": "滷肉飯加燙青菜加貢丸湯110",
+      "Strategy": "Namespace.className.FixedBundlePrice",
+      "Conditions": [
+        {
+          "Product": [ "滷肉飯" ],
+          "Count": 1
+        },
+        {
+          "Product": [ "燙青菜" ],
+          "Count": 1
+        },
+        {
+          "Product": [ "貢丸湯" ],
+          "Count": 1
+        }
+      ],
+      "Award": [
+        {
+          "Product": [],
+          "Count": 0,
+          "Type": "Price",
+          "Price": 110,
+          "Ratio": 0
+        }
+      ]
+    },
+    {
+      "Title": "滷肉飯兩份加燙青菜一份加貢丸湯兩份200",
+      "Strategy": "Namespace.className.FixedBundlePrice",
+      "Conditions": [
+        {
+          "Product": [ "滷肉飯" ],
+          "Count": 2
+        },
+        {
+          "Product": [ "燙青菜" ],
+          "Count": 1
+        },
+        {
+          "Product": [ "貢丸湯" ],
+          "Count": 2
+        }
+      ],
+      "Award": [
+        {
+          "Product": [],
+          "Count": 0,
+          "Type": "Price",
+          "Price": 200,
+          "Ratio": 0
+        }
+      ]
+    },
+    {
+      "Title": "雞腿飯搭檸檬紅茶打9折",
+      "Strategy": "Namespace.className.FixedBundlePrice",
+      "Conditions": [
+        {
+          "Product": [ "雞腿飯" ],
+          "Count": 1
+        },
+        {
+          "Product": [ "檸檬紅茶" ],
+          "Count": 1
+        }
+      ],
+      "Award": [
+        {
+          "Product": [],
+          "Count": 0,
+          "Type": "ratio",
+          "Price": 0,
+          "Ratio": 0.9
+        }
+      ]
+    },
+    {
+      "Title": "所有主餐任選三份270",
+      "Strategy": "Namespace.className.PercentageOffBundle",
+      "Conditions": [
+        {
+          "Product": [ "魚排飯", "雞排飯", "烤肉飯", "雞腿飯" ],
+          "Count": 3
+        }
+      ],
+      "Award": [
+        {
+          "Product": [],
+          "Count": 0,
+          "Type": "Price",
+          "Price": 270,
+          "Ratio": 0
+        }
+      ]
+    },
+    {
+      "Title": "所有主餐任選三份打8折",
+      "Strategy": "Namespace.className.PercentageOffBundle",
+      "Conditions": [
+        {
+          "Product": [ "魚排飯", "雞排飯", "烤肉飯", "雞腿飯" ],
+          "Count": 3
+        }
+      ],
+      "Award": [
+        {
+          "Product": [],
+          "Count": 0,
+          "Type": "ratio",
+          "Price": 0,
+          "Ratio": 0.8
+        }
+      ]
+    },
+    {
+      "Title": "任選單一主餐搭任一種飲料100",
+      "Strategy": "Namespace.className.PercentageOffBundle",
+      "Conditions": [
+        {
+          "Product": [ "魚排飯", "雞排飯", "烤肉飯", "雞腿飯" ],
+          "Count": 1
+        },
+        {
+          "Product": [ "紅茶", "烏龍茶", "清茶" ],
+          "Count": 1
+        }
+      ],
+      "Award": [
+        {
+          "Product": [],
+          "Count": 0,
+          "Type": "Price",
+          "Price": 100,
+          "Ratio": 0
+        }
+      ]
+    },
+    {
+      "Title": "全場消費滿300折50",
+      "Strategy": "Namespace.className.StorewideSpendingThreshold",
+      "Conditions": [
+        {
+          "Product": [],
+          "Count": 0,
+          "Price": 300
+        }
+      ],
+      "Award": [
+        {
+          "Product": [],
+          "Count": 0,
+          "Type": "discount",
+          "Price": 0,
+          "Ratio": 0,
+          "Discount": 50
+        }
+      ]
+    },
+    {
+      "Title": "全場消費滿300打85折",
+      "Strategy": "Namespace.className.StorewideSpendingThreshold",
+      "Conditions": [
+        {
+          "Product": [],
+          "Count": 0,
+          "Price": 300
+        }
+      ],
+      "Award": [
+        {
+          "Product": [],
+          "Count": 0,
+          "Type": "ratio",
+          "Price": 0,
+          "Ratio": 0.85,
+          "Discount": 0
+        }
+      ]
+    }
+  ]
+
+
+
+}

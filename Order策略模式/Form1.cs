@@ -1,14 +1,15 @@
-﻿using order.Sales;
+﻿using Newtonsoft.Json;
+using order.Sales;
+using Order策略模式.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace order
 {
@@ -32,14 +33,46 @@ namespace order
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            string json = File.ReadAllText(@"C:\Users\user\source\repos\C#基礎專案\order_clone\Order策略模式\menu.json");
 
-            foods.createfood(flowLayoutPanel1, NumericUpDown_ValueChanged, CheckBox_CheckedChanged);
-            meals.createfood(flowLayoutPanel2, NumericUpDown_ValueChanged, CheckBox_CheckedChanged);
-            drinks.createfood(flowLayoutPanel3, NumericUpDown_ValueChanged, CheckBox_CheckedChanged);
-            comboBox1.Items.Add("打八折");
-            comboBox1.Items.Add("打九折");
-            comboBox1.Items.Add("雞腿飯送蘿蔔湯");
-            comboBox1.Items.Add("烤肉飯買二送一");
+            MenuModel menuModel = JsonConvert.DeserializeObject<MenuModel>(json);
+
+            foreach (MenuModel.Menu menu in menuModel.Menus)
+            {
+                FlowLayoutPanel foodPanel = new FlowLayoutPanel();
+                foodPanel.Width = (container.Width / 2) - 10;
+                foodPanel.Height = (container.Height / 2) - 10;
+
+                Label titleLabel = new Label();
+                titleLabel.Text = menu.FoodType;
+
+                FlowLayoutPanel foodItems = new FlowLayoutPanel();
+                foodItems.Width = foodPanel.Width;
+                foodItems.Height = foodPanel.Height;
+                foodItems.AutoScroll = true;
+                string[] menuString = menu.Foods.Select(x => $"{x.Name}${x.Price}").ToArray();
+                menuString.createfood(foodItems, NumericUpDown_ValueChanged, CheckBox_CheckedChanged);
+
+                foodPanel.Controls.Add(titleLabel);
+                foodPanel.Controls.Add(foodItems);
+
+
+                container.Controls.Add(foodPanel);
+            }
+
+
+
+
+
+
+            //comboBox1.Items.Add("打八折");
+            //comboBox1.Items.Add("打九折");
+            //comboBox1.Items.Add("雞腿飯送蘿蔔湯");
+            //comboBox1.Items.Add("烤肉飯買二送一");
+
+            comboBox1.DataSource = menuModel.Discounts;
+            comboBox1.DisplayMember = "Title";
+            comboBox1.ValueMember = "Strategy";
             flowLayoutPanel4.create_subpanel_title();
 
 
@@ -147,8 +180,6 @@ namespace order
         {
 
         }
-
-
     }
 }
 
